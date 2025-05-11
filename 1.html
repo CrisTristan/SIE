@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>prototipo :3 Actividades</title>
+  <link rel="stylesheet" href="1.css"/>
+</head>
+<body>
+  <div class="cuerpo">
+    <h1> prototipo :3 de Actividades Extraescolares</h1>
+    <div class="menu">
+      <input type="busqueda" id="searchInput" placeholder="Buscar por número de control o nombre" />
+      <select id="categoryFilter">
+        <option value="">Filtrar por categoría</option>
+        <option value="deportivas">deportivas</option>
+        <option value="artisticas">artisticas</option>
+        <option value="academicas">academicas</option>
+      </select>
+      <button id="addBtn">+ Agregar Estudiante</button>
+      <a href="3.html"><button id="addBtn">+ Actividades</button></a>
+      
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Número de Control</th>
+          <th>Nombre</th>
+          <th>Apellidos</th>
+          <th>Carrera</th>
+          <th>Actividad</th>
+          <th>Categoría</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody id="studentTable">
+        <!-- codigo con javaScript -->
+      </tbody>
+    </table>
+  </div>
+
+  <script src="1.js"></script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Crear Actividad Extraescolar</title>
+  <link rel="stylesheet" href="4.css">
+</head>
+<body>
+  <div class="form-container">
+    <h1>Crear Nueva Actividad Extraescolar</h1>
+    <p class="subtitle">Complementa el formulario para crear una actividad extraescolar</p>
+
+    <form>
+      <label>Nombre de la Actividad</label>
+      <input type="text" placeholder="Ej: Fútbol">
+      <small>Ingrese el nombre de la actividad extraescolar.</small>
+
+      <label>Horario</label>
+      <input type="text" placeholder="16:00 - 17:00">
+
+      <label>Nombre del profesor</label>
+      <input type="text" placeholder="Ej: Juan Pérez">
+      <small>Ingrese el nombre completo del profesor responsable</small>
+
+      <label>Matrícula del Profesor</label>
+      <input type="text" placeholder="Ej: PRF-2025-123">
+
+      <label>Ubicación</label>
+      <input type="text" placeholder="Domo, canchas de fut">
+
+      <label>Espacios Disponibles</label>
+      <input type="number" min="1" placeholder="1">
+      <small>Números de estudiantes que pueden inscribirse.</small>
+
+      <div class="section-header">
+        <h3>Material Complementario</h3>
+        <button type="button" class="add-btn">+ Agregar Equipo</button>
+      </div>
+
+      <div class="material-row">
+        <div class="material-input">
+          <label>Nombre del Equipo</label>
+          <input type="text" placeholder="Ej: Balones">
+        </div>
+        <div class="material-input">
+          <label>Cantidad</label>
+          <input type="number" min="1" placeholder="1">
+        </div>
+      </div>
+
+      <div class="form-buttons">
+        <button type="button" class="cancel-btn">Cancelar</button>
+        <button type="submit" class="submit-btn">Crear Actividad</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>
