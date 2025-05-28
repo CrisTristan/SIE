@@ -1,36 +1,179 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Actividades Disponibles</title>
-  <link rel="stylesheet" href="3.css"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Actividades | TecNM Campus Cancún</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="3.css">
 </head>
 <body>
-  <div class="page">
-    <a href="4.html"><button class="new-btn">Nueva Actividad</button></a>
-    <p class="subtext">Administre las actividades disponibles para los estudiantes</p>
+    <div class="page-wrapper">
+        <!-- Navegación Superior -->
+        <nav class="top-nav">
+            <a href="1.html" class="back-button">
+                <i class="fas fa-arrow-left"></i>
+                <span>Volver al Panel</span>
+            </a>
+            <img src="https://www.cancun.tecnm.mx/wp-content/themes/itcancun/img/Fotos-PDF-Doctorado/LOGO%20ITCANCUN%20MARCA%20REGISTRADA.png" alt="Logo TecNM" class="nav-logo">
+        </nav>
 
-    <div class="table-container">
-      <h2>Actividades Existentes</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Nombre</th>
-            <th>Profesor</th>
-            <th>Matrícula</th>
-            <th>Espacios</th>
-            <th>Equipo</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody id="activityTable">
-          <!-- JavaScript -->
-        </tbody>
-      </table>
+        <!-- Contenido Principal -->
+        <main class="main-content">
+            <div class="content-container">
+                <header class="content-header">
+                    <div class="header-left">
+                        <h1>Gestión de Actividades</h1>
+                        <p class="subtitle">Administre los cursos disponibles para los estudiantes</p>
+                    </div>
+                    <div class="header-actions">
+                        <a href="courses/courseForm.html" class="btn-primary">
+                            <i class="fas fa-plus"></i>
+                            <span>Nuevo Curso</span>
+                        </a>
+                    </div>
+                </header>
+
+                <div class="search-filters">
+                    <div class="search-bar">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="searchCourse" placeholder="Buscar curso...">
+                    </div>
+                    <div class="filter-group">
+                        <select id="categoryFilter" class="filter-select">
+                            <option value="">Todas las categorías</option>
+                            <option value="deportivas">Deportivas</option>
+                            <option value="artisticas">Artísticas</option>
+                            <option value="academicas">Académicas</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <div class="table-header">
+                        <h2>Cursos Existentes</h2>
+                        <div class="table-actions">
+                            <button class="btn-secondary" id="refreshTable">
+                                <i class="fas fa-sync-alt"></i>
+                                <span>Actualizar</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <div class="th-content">
+                                            <span>Nombre</span>
+                                            <i class="fas fa-sort"></i>
+                                        </div>
+                                    </th>
+                                    <th>
+                                        <div class="th-content">
+                                            <span>Actividad</span>
+                                            <i class="fas fa-sort"></i>
+                                        </div>
+                                    </th>
+                                    <th>
+                                        <div class="th-content">
+                                            <span>Profesor</span>
+                                            <i class="fas fa-sort"></i>
+                                        </div>
+                                    </th>
+                                    <th>
+                                        <div class="th-content">
+                                            <span>Periodo</span>
+                                            <i class="fas fa-sort"></i>
+                                        </div>
+                                    </th>
+                                    <th>
+                                        <div class="th-content">
+                                            <span>Inicio</span>
+                                            <i class="fas fa-sort"></i>
+                                        </div>
+                                    </th>
+                                    <th>
+                                        <div class="th-content">
+                                            <span>Fin</span>
+                                            <i class="fas fa-sort"></i>
+                                        </div>
+                                    </th>
+                                    <th>
+                                        <div class="th-content">
+                                            <span>Espacio Total</span>
+                                            <i class="fas fa-sort"></i>
+                                        </div>
+                                    </th>
+                                    <th>
+                                        <div class="th-content">
+                                            <span>Categoria</span>
+                                            <i class="fas fa-sort"></i>
+                                        </div>
+                                    </th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="activityTable">
+                                <!-- Datos cargados dinámicamente con JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="table-footer">
+                        <div class="table-info">
+                            <span>Mostrando <strong id="currentItems">0</strong> de <strong id="totalItems">0</strong> actividades</span>
+                        </div>
+                        <div class="pagination">
+                            <button class="page-btn prev-btn" disabled>
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <div class="page-numbers">
+                                <button class="page-number active">1</button>
+                                <button class="page-number">2</button>
+                                <button class="page-number">3</button>
+                                <span class="page-ellipsis">...</span>
+                                <button class="page-number">10</button>
+                            </div>
+                            <button class="page-btn next-btn">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Notificaciones -->
+        <div id="notification" class="notification" style="display: none;">
+            <div class="notification-content">
+                <i class="notification-icon"></i>
+                <span class="notification-message"></span>
+            </div>
+        </div>
+
+        <!-- Modal de Detalles -->
+        <div id="detailsModal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Detalles de la Actividad</h2>
+                    <button class="modal-close">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- El contenido se cargará dinámicamente -->
+                </div>
+                <div class="modal-footer">
+                    <button class="btn-secondary" onclick="closeModal()">Cerrar</button>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-<a href="http://"><button class="details-btn">Ver Detalles</button></a>
-  <script src="3.js"></script>
+    <script src="3.js"></script>
 </body>
 </html>

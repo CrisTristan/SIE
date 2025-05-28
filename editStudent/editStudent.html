@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Editar Estudiante</title>
+</head>
+<link rel="stylesheet" href="editStudent.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<body>
+  <div class="edit-container">
+    <h2>Editar Estudiante</h2>
+    <form id="editStudentForm">
+      <label>Número de Control
+        <input type="text" id="matricula" name="matricula" readonly>
+      </label>
+      <label>Nombre(s)
+        <input type="text" id="nombres" name="nombres" required>
+      </label>
+      <label>Apellidos
+        <input type="text" id="apellidos" name="apellidos" required>
+      </label>
+      <label>Carrera
+        <input type="text" id="carrera" name="carrera" required>
+      </label>
+      <label>Categoría
+        <select id="categoria" name="categoria" required>
+          <option value="deportivas">Deportivas</option>
+          <option value="artisticas">Artisticas</option>
+          <option value="academicas">Academicas</option>
+        </select>
+      </label>
+      <label for="actividadRadios">Actividad</label>
+      <div id="actividadRadios"></div>
+      <input type="hidden" id="actividad" name="actividad">
+      <div class="form-buttons">
+        <button type="button" class="cancel" onclick="window.close()">Cancelar</button>
+        <button type="submit">Guardar</button>
+      </div>
+    </form>
+  </div>
+    <script src="editStudent.js"></script>
+</body>
+</html>

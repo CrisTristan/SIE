@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Crear Actividad Extraescolar</title>
+  <link rel="stylesheet" href="courseForm.css">
+</head>
+<body>
+  <div class="form-container">
+    <h1>Crear Nueva Actividad Extraescolar</h1>
+    <p class="subtitle">Complementa el formulario para crear un nuevo curso</p>
+
+    <form>
+      <label>Nombre del curso</label>
+      <input type="text" placeholder="Ej: Ajedrez para principiantes">
+      <small>Ingrese el nombre del curso</small>
+
+      <label>Nombre de la Actividad</label>
+      <div id="actividadRadios"></div>
+      <input type="hidden" id="actividad" name="actividad">
+      <small>Ingrese el nombre de la actividad extraescolar.</small>
+
+      <label>Horario</label>
+      <input type="time">
+      <p> - </p>
+      <input type="time">
+      <small>ingrese la hora de inicio y fin</small>
+
+      <label>Día de la semana</label>
+      <select id="diaSemana" name="diaSemana">
+        <option value="">Seleccione un día</option>
+        <option value="Lunes">Lunes</option>
+        <option value="Martes">Martes</option>
+        <option value="Miércoles">Miércoles</option>
+        <option value="Jueves">Jueves</option>
+        <option value="Viernes">Viernes</option>
+        <option value="Sábado">Sábado</option>
+        <option value="Domingo">Domingo</option>
+      </select>
+      <small>Seleccione el día de la semana en que se imparte el curso</small>
+
+      <label>Matricula del profesor</label>
+      <input type="text" id="matriculaProfesor" placeholder="Ej: 223-4567-890">
+      <input type="text" placeholder="Buscando Profesor con esa matricula ..." disabled="true">
+      <small>Ingrese la matricula del profesor responsable</small>
+
+      <label>Ubicación</label>
+      <input type="text" placeholder="Domo, canchas de fut">
+
+      <label>Espacios Disponibles</label>
+      <input type="number" min="1" max="50" placeholder="1">
+      <small>Números de estudiantes que pueden inscribirse.</small>
+
+      <label>Fecha de inicio</label>
+      <input type="date" id="fechaInicio" name="fechaInicio">
+      <small>Seleccione la fecha de inicio del curso</small>
+
+      <label>Fecha de fin</label>
+      <input type="date" id="fechaFin" name="fechaFin">
+      <small>Seleccione la fecha de fin del curso</small>
+
+      <div class="section-header">
+        <h3>Material Complementario</h3>
+        <button type="button" class="add-btn">+ Agregar Equipo</button>
+      </div>
+
+      <div class="material-row">
+        <div class="material-input">
+          <label>Nombre del Equipo</label>
+          <input type="text" placeholder="Ej: Balones">
+        </div>
+        <div class="material-input">
+          <label>Cantidad</label>
+          <input type="number" min="1" placeholder="1">
+        </div>
+      </div>
+
+      <div class="form-buttons">
+        <button type="button" class="cancel-btn">Cancelar</button>
+        <button type="submit" class="submit-btn">Crear Actividad</button>
+      </div>
+    </form>
+  </div>
+</body>
+<script src="courseForm.js"></script>
+</html>

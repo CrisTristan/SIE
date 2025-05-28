@@ -1,111 +1,341 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Detalles de Actividad</title>
-  <link rel="stylesheet" href="5.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles de Actividad | TecNM Campus Cancún</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="5.css">
 </head>
 <body>
-  <div class="container">
-    <div class="panel-left">
-      <a href="#" class="back-link">← Volver al panel</a>
+    <div class="page-wrapper">
+        <!-- Navegación Superior -->
+        <nav class="top-nav">
+            <a href="3.html" class="back-button">
+                <i class="fas fa-arrow-left"></i>
+                <span>Volver a Actividades</span>
+            </a>
+            <img src="https://www.cancun.tecnm.mx/wp-content/themes/itcancun/img/Fotos-PDF-Doctorado/LOGO%20ITCANCUN%20MARCA%20REGISTRADA.png" alt="Logo TecNM" class="nav-logo">
+        </nav>
 
-      <h2>Fútbol</h2>
-      <p class="section-title">Detalles de la actividad</p>
+        <!-- Contenido Principal -->
+        <main class="main-content">
+            <div class="content-container">
+                <div class="activity-grid">
+                    <!-- Panel Izquierdo - Detalles de Actividad -->
+                    <section class="activity-details">
+                        <div class="activity-header">
+                            <div class="activity-title">
+                                <h1>Fútbol</h1>
+                                <span class="category-badge sports">Deportiva</span>
+                            </div>
+                            <div class="activity-actions">
+                                <button class="btn-secondary">
+                                    <i class="fas fa-edit"></i>
+                                    <span>Editar</span>
+                                </button>
+                                <button class="btn-primary">
+                                    <i class="fas fa-plus"></i>
+                                    <span>Inscribir Alumno</span>
+                                </button>
+                            </div>
+                        </div>
 
-      <div class="info">
-        <p><strong>Profesor:</strong><br>Carlos Rodríguez<br>Matrícula: PRF-2023-001</p>
+                        <div class="info-grid">
+                            <div class="info-card">
+                                <div class="info-icon">
+                                    <i class="fas fa-user-tie"></i>
+                                </div>
+                                <div class="info-content">
+                                    <h3>Profesor</h3>
+                                    <p>Carlos Rodríguez</p>
+                                    <span class="info-detail">PRF-2023-001</span>
+                                </div>
+                            </div>
 
-        <p><strong>Espacios:</strong><br>18 / 25 
-          <span class="tag disponible">Disponible</span>
-        </p>
+                            <div class="info-card">
+                                <div class="info-icon">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <div class="info-content">
+                                    <h3>Espacios</h3>
+                                    <div class="spaces-info">
+                                        <p><strong>18</strong> / 25</p>
+                                        <span class="status-badge available">Disponible</span>
+                                    </div>
+                                </div>
+                            </div>
 
-        <p><strong>Horario:</strong><br>Lunes y Miércoles, 16:00 - 18:00</p>
-        <p><strong>Ubicación:</strong><br>Campo Deportivo Norte</p>
+                            <div class="info-card">
+                                <div class="info-icon">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div class="info-content">
+                                    <h3>Horario</h3>
+                                    <p>Lunes y Miércoles</p>
+                                    <span class="info-detail">16:00 - 18:00</span>
+                                </div>
+                            </div>
 
-        <p><strong>Material Complementario</strong></p>
-        <ul>
-          <li>Balones: 10</li>
-          <li>Conos: 20</li>
-        </ul>
+                            <div class="info-card">
+                                <div class="info-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="info-content">
+                                    <h3>Ubicación</h3>
+                                    <p>Campo Deportivo Norte</p>
+                                </div>
+                            </div>
+                        </div>
 
-        <p><strong>Descripción</strong><br>
-          Entrenamiento de fútbol para todos los niveles, enfocado en técnica, táctica y acondicionamiento físico.
-        </p>
-      </div>
+                        <div class="details-section">
+                            <h2>Material Complementario</h2>
+                            <div class="equipment-grid">
+                                <div class="equipment-item">
+                                    <i class="fas fa-futbol"></i>
+                                    <span>10 Balones</span>
+                                </div>
+                                <div class="equipment-item">
+                                    <i class="fas fa-triangle-exclamation"></i>
+                                    <span>20 Conos</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="details-section">
+                            <h2>Descripción</h2>
+                            <p class="description-text">
+                                Entrenamiento de fútbol para todos los niveles, enfocado en técnica, táctica y acondicionamiento físico.
+                            </p>
+                        </div>
+                    </section>
+
+                    <!-- Panel Derecho - Lista de Estudiantes -->
+                    <section class="students-section">
+                        <div class="section-header">
+                            <div class="header-info">
+                                <h2>Estudiantes Inscritos</h2>
+                                <span class="student-count">6 estudiantes</span>
+                            </div>
+                            <div class="view-controls">
+                                <div class="view-toggle">
+                                    <button class="view-btn active" data-view="list">
+                                        <i class="fas fa-list"></i>
+                                    </button>
+                                    <button class="view-btn" data-view="grid">
+                                        <i class="fas fa-th-large"></i>
+                                    </button>
+                                </div>
+                                <button class="btn-secondary" title="Exportar">
+                                    <i class="fas fa-download"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="search-bar">
+                            <i class="fas fa-search"></i>
+                            <input type="text" placeholder="Buscar estudiante...">
+                        </div>
+
+                        <div class="table-responsive">
+                            <table class="students-table">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            <div class="th-content">
+                                                <span>Nombre</span>
+                                                <i class="fas fa-sort"></i>
+                                            </div>
+                                        </th>
+                                        <th>
+                                            <div class="th-content">
+                                                <span>Matrícula</span>
+                                                <i class="fas fa-sort"></i>
+                                            </div>
+                                        </th>
+                                        <th>
+                                            <div class="th-content">
+                                                <span>Carrera</span>
+                                                <i class="fas fa-sort"></i>
+                                            </div>
+                                        </th>
+                                        <th>
+                                            <div class="th-content">
+                                                <span>Semestre</span>
+                                                <i class="fas fa-sort"></i>
+                                            </div>
+                                        </th>
+                                        <th>
+                                            <div class="th-content">
+                                                <span>Asistencia</span>
+                                                <i class="fas fa-sort"></i>
+                                            </div>
+                                        </th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td data-label="Nombre">Juan Carlos Pérez Gómez</td>
+                                        <td data-label="Matrícula">A01234567</td>
+                                        <td data-label="Carrera">Ingeniería en Sistemas Computacionales</td>
+                                        <td data-label="Semestre">5°</td>
+                                        <td data-label="Asistencia">
+                                            <div class="attendance-badge good">85%</div>
+                                        </td>
+                                        <td data-label="Acciones">
+                                            <div class="action-buttons">
+                                                <button class="action-btn" title="Ver detalles">
+                                                    <i class="fas fa-eye"></i>
+                                                </button>
+                                                <button class="action-btn edit" title="Editar">
+                                                    <i class="fas fa-edit"></i>
+                                                </button>
+                                                <button class="action-btn delete" title="Eliminar">
+                                                    <i class="fas fa-trash-alt"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td data-label="Nombre">María Fernanda López Torres</td>
+                                        <td data-label="Matrícula">A01234568</td>
+                                        <td data-label="Carrera">Administración de Empresas</td>
+                                        <td data-label="Semestre">3°</td>
+                                        <td data-label="Asistencia">
+                                            <div class="attendance-badge excellent">92%</div>
+                                        </td>
+                                        <td data-label="Acciones">
+                                            <div class="action-buttons">
+                                                <button class="action-btn" title="Ver detalles">
+                                                    <i class="fas fa-eye"></i>
+                                                </button>
+                                                <button class="action-btn edit" title="Editar">
+                                                    <i class="fas fa-edit"></i>
+                                                </button>
+                                                <button class="action-btn delete" title="Eliminar">
+                                                    <i class="fas fa-trash-alt"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td data-label="Nombre">Roberto Sánchez Vega</td>
+                                        <td data-label="Matrícula">A01234569</td>
+                                        <td data-label="Carrera">Ingeniería Industrial</td>
+                                        <td data-label="Semestre">7°</td>
+                                        <td data-label="Asistencia">
+                                            <div class="attendance-badge average">78%</div>
+                                        </td>
+                                        <td data-label="Acciones">
+                                            <div class="action-buttons">
+                                                <button class="action-btn" title="Ver detalles">
+                                                    <i class="fas fa-eye"></i>
+                                                </button>
+                                                <button class="action-btn edit" title="Editar">
+                                                    <i class="fas fa-edit"></i>
+                                                </button>
+                                                <button class="action-btn delete" title="Eliminar">
+                                                    <i class="fas fa-trash-alt"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td data-label="Nombre">Sofía Ramírez Mendoza</td>
+                                        <td data-label="Matrícula">A01234570</td>
+                                        <td data-label="Carrera">Arquitectura</td>
+                                        <td data-label="Semestre">4°</td>
+                                        <td data-label="Asistencia">
+                                            <div class="attendance-badge good">95%</div>
+                                        </td>
+                                        <td data-label="Acciones">
+                                            <div class="action-buttons">
+                                                <button class="action-btn" title="Ver detalles">
+                                                    <i class="fas fa-eye"></i>
+                                                </button>
+                                                <button class="action-btn edit" title="Editar">
+                                                    <i class="fas fa-edit"></i>
+                                                </button>
+                                                <button class="action-btn delete" title="Eliminar">
+                                                    <i class="fas fa-trash-alt"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td data-label="Nombre">Daniel Ortega Juárez</td>
+                                        <td data-label="Matrícula">A01234571</td>
+                                        <td data-label="Carrera">Medicina</td>
+                                        <td data-label="Semestre">6°</td>
+                                        <td data-label="Asistencia">
+                                            <div class="attendance-badge good">88%</div>
+                                        </td>
+                                        <td data-label="Acciones">
+                                            <div class="action-buttons">
+                                                <button class="action-btn" title="Ver detalles">
+                                                    <i class="fas fa-eye"></i>
+                                                </button>
+                                                <button class="action-btn edit" title="Editar">
+                                                    <i class="fas fa-edit"></i>
+                                                </button>
+                                                <button class="action-btn delete" title="Eliminar">
+                                                    <i class="fas fa-trash-alt"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td data-label="Nombre">Valentina Castro Robles</td>
+                                        <td data-label="Matrícula">A01234572</td>
+                                        <td data-label="Carrera">Psicología</td>
+                                        <td data-label="Semestre">2°</td>
+                                        <td data-label="Asistencia">
+                                            <div class="attendance-badge good">90%</div>
+                                        </td>
+                                        <td data-label="Acciones">
+                                            <div class="action-buttons">
+                                                <button class="action-btn" title="Ver detalles">
+                                                    <i class="fas fa-eye"></i>
+                                                </button>
+                                                <button class="action-btn edit" title="Editar">
+                                                    <i class="fas fa-edit"></i>
+                                                </button>
+                                                <button class="action-btn delete" title="Eliminar">
+                                                    <i class="fas fa-trash-alt"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="table-footer">
+                            <div class="table-info">
+                                <span>Mostrando <strong>6</strong> de <strong>6</strong> estudiantes</span>
+                            </div>
+                            <div class="pagination">
+                                <button class="page-btn prev-btn" disabled>
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+                                <div class="page-numbers">
+                                    <button class="page-number active">1</button>
+                                </div>
+                                <button class="page-btn next-btn" disabled>
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </main>
     </div>
 
-    <div class="panel-right">
-      <div class="header">
-        <h2>Estudiantes Inscritos</h2>
-        <p>6 estudiante(s) en esta actividad</p>
-      </div>
-
-      <div class="controls">
-        <div class="tabs">
-          <button class="active">Lista</button>
-          <button>Tarjetas</button>
-        </div>
-        <input type="text" class="search" placeholder="🔍 Buscar estudiante...">
-        <button class="download">⬇</button>
-      </div>
-
-      <table>
-        <thead>
-          <tr>
-            <th>Nombre</th>
-            <th>Matrícula</th>
-            <th>Carrera</th>
-            <th>Semestre</th>
-            <th>Asistencia</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Juan Carlos Pérez Gómez</td>
-            <td>A01234567</td>
-            <td>Ingeniería en Sistemas Computacionales</td>
-            <td>5°</td>
-            <td><span class="pill">85%</span></td>
-          </tr>
-          <tr>
-            <td>María Fernanda López Torres</td>
-            <td>A01234568</td>
-            <td>Administración de Empresas</td>
-            <td>3°</td>
-            <td><span class="pill">92%</span></td>
-          </tr>
-          <tr>
-            <td>Roberto Sánchez Vega</td>
-            <td>A01234569</td>
-            <td>Ingeniería Industrial</td>
-            <td>7°</td>
-            <td><span class="pill">78%</span></td>
-          </tr>
-          <tr>
-            <td>Sofía Ramírez Mendoza</td>
-            <td>A01234570</td>
-            <td>Arquitectura</td>
-            <td>4°</td>
-            <td><span class="pill">95%</span></td>
-          </tr>
-          <tr>
-            <td>Daniel Ortega Juárez</td>
-            <td>A01234571</td>
-            <td>Medicina</td>
-            <td>6°</td>
-            <td><span class="pill">88%</span></td>
-          </tr>
-          <tr>
-            <td>Valentina Castro Robles</td>
-            <td>A01234572</td>
-            <td>Psicología</td>
-            <td>2°</td>
-            <td><span class="pill">90%</span></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
+    <script src="5.js"></script>
 </body>
 </html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portal del Profesor</title>
+  <link rel="stylesheet" href="panelPrincipal.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-title">📖 Portal del Profesor</div>
+    <ul class="nav-links">
+      <li>Panel Principal</li>
+      <li>Mis Clases</li>
+      <li>Calendario</li>
+      <li>Mensajes</li>
+      <li>Recursos</li>
+    </ul>
+    <div class="nav-icons">
+      <span class="bell">🔔</span>
+      <span class="settings" id="settingsBtn">⚙️</span>
+      <div id="settingsMenu" style="display:none; position:absolute; right:20px; top:60px; background:#fff; border:1px solid #ccc; border-radius:6px; box-shadow:0 2px 8px #0002; z-index:1001;">
+        <button id="logoutBtn" style="padding:10px 24px; background:none; border:none; width:100%; text-align:left; cursor:pointer;">Salir</button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="main-container">
+    <section class="profile" id="profile-section">
+      <div class="profile-header">
+        <div class="avatar"></div>
+        <div>
+          <h2 id="prof-nombre">Cargando...</h2>
+          <p id="prof-matricula">Matrícula de Profesor:</p>
+          <div class="tags" id="prof-actividad-tags" style="background-color: gray;"></div>
+        </div>
+      </div>
+      <p id="prof-especialidad">Especialidad: </p>
+      <p id="prof-horas">Horas de Enseñanza: --</p>
+      <p id="prof-estudiantes">Total de Estudiantes: --</p>
+      <p>Progreso del Semestre:</p>
+      <div class="progress-bar">
+        <div class="progress" style="width: 65%"></div>
+      </div>
+      <button class="profile-button">Ver Perfil Completo</button>
+    </section>
+
+    <section class="classes" id="clases-section">
+      <h3>Mis Clases</h3>
+      <div id="curso-info">
+        <p>Cargando información del curso...</p>
+      </div>
+    </section>
+
+    <section class="announcements">
+      <div class="announcements-header">
+        <h3>Anuncios</h3>
+        <button class="add-button">Agregar Anuncio</button>
+      </div>
+
+      <div class="announcement high">
+        <div>
+          <h4>Exámenes de Fin de Semestre</h4>
+          <p>Los exámenes finales para todas las clases se realizarán del 10 al 15 de junio. Por favor prepare a sus estudiantes adecuadamente...</p>
+        </div>
+        <span class="date">14 may</span>
+      </div>
+
+      <div class="announcement">
+        <h4>Reunión de Facultad</h4>
+        <p>Recordatorio: Reunión de facultad este viernes a las 3:30 PM en la sala de conferencias.</p>
+        <span class="date">13 may</span>
+      </div>
+
+      <div class="announcement">
+        <h4>Preparación para el Día Deportivo</h4>
+        <p>Se solicita a todos los profesores de Educación Física que presenten sus planes de eventos para el próximo Día Deportivo antes del 20 de mayo.</p>
+        <span class="date">11 may</span>
+      </div>
+
+      <div class="announcement">
+        <h4>Actualización del Plan de Estudios</h4>
+        <p>Las nuevas directrices del plan de estudios de matemáticas ya están disponibles en el portal del personal.</p>
+        <span class="date">9 may</span>
+      </div>
+
+      <button class="view-all">Ver Todos los Anuncios</button>
+    </section>
+  </main>
+
+  <script src="panelPrincipal.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Cambia la matrícula aquí si es necesario
+      const matricula = '22530214';
+      fetch(`http://localhost:3000/curso/${matricula}`)
+        .then(res => res.json())
+        .then(curso => {
+          // Sección de clases
+          const cont = document.getElementById('curso-info');
+          const usuario = curso.profesor?.usuario || {};
+          cont.innerHTML = `
+            <div class="class-card">
+              <div>
+                <h4>📘 ${curso.nombre}</h4>
+                <p>
+                  ${curso.hora_inicio ? curso.hora_inicio.substring(0,5) : ''} - ${curso.hora_fin ? curso.hora_fin.substring(0,5) : ''} &nbsp;&nbsp;
+                  ${curso.dias ? curso.dias : ''} 
+                  <br>
+                  periodo:(${curso.periodo})
+                </p>
+                <p><strong>Inicio:</strong> ${curso.inicio ? curso.inicio.split('T')[0] : ''} &nbsp; <strong>Fin:</strong> ${curso.fin ? curso.fin.split('T')[0] : ''}</p>
+                <p><strong>Espacios:</strong> ${curso.espacios}</p>
+                <p><strong>Profesor:</strong> ${curso.profesor?.usuario?.nombres || ''} ${curso.profesor?.usuario?.apellidos || ''}</p>
+                <p><strong>Actividad:</strong> ${curso.actividad?.nombre || ''} (${curso.actividad?.categoria || ''})</p>
+                <button class="view-button" onclick='location.href="http://127.0.0.1:5500/profesores/listaAsistencia/listaAsistencia.html?matricula=${usuario.matricula}&nombreCurso=${encodeURIComponent(curso.nombre)}&idCurso=${curso.id}"'>Ver Detalles</button>
+              </div>
+              <span class="tag blue">${curso.actividad?.nombre || ''}</span>
+            </div>
+          `;
+
+          // Sección de perfil
+          const prof = curso.profesor?.usuario || {};
+          document.getElementById('prof-nombre').textContent = `${prof.nombres || ''} ${prof.apellidos || ''}`;
+          document.getElementById('prof-matricula').textContent = `Matrícula de Profesor: ${prof.matricula || ''}`;
+          document.getElementById('prof-especialidad').textContent = `Especialidad: ${curso.profesor?.especialidad || ''}`;
+          document.getElementById('prof-horas').textContent = `Horas de Enseñanza: --`;
+          document.getElementById('prof-estudiantes').textContent = `Total de Estudiantes: --`;
+          // Tags de actividad
+          const tagsDiv = document.getElementById('prof-actividad-tags');
+          tagsDiv.innerHTML = '';
+          if (curso.actividad?.nombre) {
+            const tag = document.createElement('span');
+            tag.className = 'tag pink';
+            tag.textContent = curso.actividad.nombre;
+            tagsDiv.appendChild(tag);
+          }
+        })
+        .catch(() => {
+          document.getElementById('curso-info').innerHTML = '<p>No se pudo cargar la información del curso.</p>';
+          document.getElementById('prof-nombre').textContent = 'No disponible';
+          document.getElementById('prof-matricula').textContent = 'Matrícula de Profesor:';
+          document.getElementById('prof-especialidad').textContent = 'Especialidad:';
+          document.getElementById('prof-actividad-tags').innerHTML = '';
+        });
+
+      // Settings menu logic
+      const settingsBtn = document.getElementById('settingsBtn');
+      const settingsMenu = document.getElementById('settingsMenu');
+      const logoutBtn = document.getElementById('logoutBtn');
+      settingsBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        settingsMenu.style.display = settingsMenu.style.display === 'none' ? 'block' : 'none';
+      });
+      logoutBtn.addEventListener('click', function() {
+        window.location.href = '../../index.html';
+      });
+      document.addEventListener('click', function(e) {
+        if (settingsMenu.style.display === 'block' && !settingsMenu.contains(e.target) && e.target !== settingsBtn) {
+          settingsMenu.style.display = 'none';
+        }
+      });
+    });
+  </script>
+</body>
+</html>

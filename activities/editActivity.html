@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editar Actividad</title>
+  <link rel="stylesheet" href="editActivity.css">
+</head>
+<body>
+  <form action="/editar" method="post">
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" name="nombre"><br><br>
+
+    <label>Actividad:</label>
+    <div id="actividadRadios"></div>
+    <input type="hidden" id="actividad" name="actividad"><br><br>
+
+    <label for="profesor">Profesor:</label>
+    <input type="text" id="profesor" name="profesor" disabled='true'><br><br>
+
+    <label for="periodo">Periodo:</label>
+    <input type="text" id="periodo" name="periodo"><br><br>
+
+    <label for="inicio">Inicio:</label>
+    <input type="date" id="inicio" name="inicio"><br><br>
+
+    <label for="fin">Fin:</label>
+    <input type="date" id="fin" name="fin"><br><br>
+
+    <label for="espacios_disponibles">Espacios disponibles:</label>
+    <input type="number" id="espacios_disponibles" name="espacios_disponibles"><br><br>
+
+    <input type="submit" value="Guardar cambios">
+  </form>
+
+  <script src="editActivity.js"></script>
+</body>
+</html>

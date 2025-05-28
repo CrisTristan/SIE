@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Panel Extraescolares</title>
+  <link rel="stylesheet" href="../css/estilo.css">
+</head>
+<body>
+  <div class="sidebar">
+    <h2>Extraescolares</h2>
+     <a href="../dashboard/index.html">Dashboard</a>
+    <a href="../cursos/index.html">Mis Cursos</a>
+    <a href="../calendario/index.html">Calendario</a>
+    <a href="../calificaciones/index.html">Calificaciones</a>
+    <a href="../compañeros/index.html">Compañeros</a>
+    
+  </div>
+
+  <div class="main">
+    <div class="header" id="student-header">
+      <!-- El contenido de este div será reemplazado dinámicamente -->
+    </div>
+
+    <div class="cards" id="student-cards">
+      <!-- Cards se llenarán dinámicamente -->
+    </div>
+
+    <div class="section" id="mis-cursos-section">
+      <h2>Mis Cursos</h2>
+      <div id="mis-cursos-list">
+        <!-- Cursos se llenarán dinámicamente -->
+      </div>
+    </div>
+
+    <div class="section" id="proximas-actividades-section">
+      <h2>Próximas Actividades</h2>
+      <div id="proximas-actividades-list">
+        <!-- Actividades se llenarán dinámicamente -->
+      </div>
+    </div>
+
+    <div class="section" id="notificaciones-section">
+      <h2>Notificaciones Recientes</h2>
+      <div id="notificaciones-list">
+        <!-- Notificaciones se llenarán dinámicamente -->
+      </div>
+    </div>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Cambia la matrícula aquí si es necesario
+      const matricula = '22530213';
+      fetch(`http://localhost:3000/student/${matricula}`)
+        .then(res => res.json())
+        .then(data => {
+          // Imagen de perfil (si tienes una propiedad para la imagen, cámbiala aquí)
+          const avatarUrl = data.usuario.foto_perfil && data.usuario.foto_perfil.trim() !== ""
+            ? data.usuario.foto_perfil
+            : "https://cdn-icons-png.flaticon.com/512/4086/4086652.png";
+          document.getElementById('student-header').innerHTML = `
+            <div id="student-avatar-container" style="display:flex; flex-direction:column; align-items:center;">
+              <img id="student-avatar" src="${avatarUrl}" alt="Foto de perfil" style="width:80px;height:80px;border-radius:50%;object-fit:cover;margin-bottom:10px;">
+            </div>
+            <h1>Bienvenida, ${data.usuario.nombres} ${data.usuario.apellidos}</h1>
+            <p>Correo: <strong>${data.usuario.correo}</strong></p>
+            <p>Matrícula: <strong>${data.usuario.matricula}</strong></p>
+            <p>Semestre: <strong>${data.semestre}</strong></p>
+          `;
+
+          // Cards
+          document.getElementById('student-cards').innerHTML = `
+            <div class="card">
+              <h3>Curso Actual</h3>
+              <p>${data.curso ? data.curso.nombre : 'Sin curso'}</p>
+            </div>
+            <div class="card">
+              <h3>Periodo</h3>
+              <p>${data.curso ? data.curso.periodo : '--'}</p>
+            </div>
+            <div class="card">
+              <h3>Horario</h3>
+              <p>${data.curso ? (data.curso.dias + ' ' + (data.curso.hora_inicio ? data.curso.hora_inicio.substring(0,5) : '') + ' - ' + (data.curso.hora_fin ? data.curso.hora_fin.substring(0,5) : '')) : '--'}</p>
+            </div>
+          `;
+
+          // Mis Cursos
+          document.getElementById('mis-cursos-list').innerHTML = data.curso ? `
+            <div class="course blue">
+              <h3>${data.curso.nombre}</h3>
+              <p>${data.curso.dias} ${data.curso.hora_inicio ? data.curso.hora_inicio.substring(0,5) : ''}–${data.curso.hora_fin ? data.curso.hora_fin.substring(0,5) : ''}</p>
+              <div class="progress-bar"><div class="progress" style="width: 75%;"></div></div>
+              <small>Inicio: ${data.curso.inicio ? data.curso.inicio.split('T')[0] : ''} | Fin: ${data.curso.fin ? data.curso.fin.split('T')[0] : ''}</small>
+              <br>
+              <small>Actividad: ${data.curso.actividad?.nombre || ''} (${data.curso.actividad?.categoria || ''})</small>
+            </div>
+          ` : '<div class="course">No tienes cursos inscritos actualmente.</div>';
+
+          // Próximas Actividades (simulado, puedes adaptar según tu backend)
+          document.getElementById('proximas-actividades-list').innerHTML = data.curso ? `
+            <div class="event"><strong>Inicio de curso</strong><br><small>${data.curso.inicio ? data.curso.inicio.split('T')[0] : ''} ${data.curso.hora_inicio ? data.curso.hora_inicio.substring(0,5) : ''}</small> <span class="tag evento">Inicio</span></div>
+            <div class="event"><strong>Fin de curso</strong><br><small>${data.curso.fin ? data.curso.fin.split('T')[0] : ''} ${data.curso.hora_fin ? data.curso.hora_fin.substring(0,5) : ''}</small> <span class="tag evento">Fin</span></div>
+          ` : '<div class="event">No hay próximas actividades.</div>';
+
+          // Notificaciones (simulado)
+          document.getElementById('notificaciones-list').innerHTML = `
+            <div class="notification">Bienvenido al sistema, ${data.usuario.nombres}.<br><small>Hoy</small></div>
+            <div class="notification">Recuerda asistir a tu curso: ${data.curso ? data.curso.nombre : ''}.<br><small>Hoy</small></div>
+          `;
+        })
+        .catch(() => {
+          document.getElementById('student-header').innerHTML = '<h1>No se pudo cargar la información del estudiante.</h1>';
+          document.getElementById('student-cards').innerHTML = '';
+          document.getElementById('mis-cursos-list').innerHTML = '';
+          document.getElementById('proximas-actividades-list').innerHTML = '';
+          document.getElementById('notificaciones-list').innerHTML = '';
+        });
+    });
+  </script>
+</body>
+</html>

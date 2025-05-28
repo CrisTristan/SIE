@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sistema de Profesores</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Sistema de Profesores</h1>
+    <nav>
+      <ul>
+        <li>Profesores</li>
+        <li>Actividades</li>
+        <li>Especialidades</li>
+        <li>Reportes</li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="panel">
+      <div class="panel-header">
+        <h2>Panel de Administración de Profesores</h2>
+        <p>Gestiona los profesores que imparten actividades deportivas, académicas y artísticas</p>
+      </div>
+
+      <div class="controls">
+        <input type="text" id="buscarProfesor" placeholder="🔍 Buscar profesores...">
+        <select>
+          <option>Todas las actividades</option>
+        </select>
+        <button class="btn-nuevo" id="btnNuevoProfesor">+ Nuevo Profesor</button>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Especialidad</th>
+            <th>Tipo de Actividad</th>
+            <th>Actividades</th>
+            <th>Cursos</th>
+            <th>Evaluación</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="profesores-tbody">
+          <!-- Los profesores se llenarán dinámicamente -->
+        </tbody>
+      </table>
+    </section>
+  </main>
+  <!-- Modal para nuevo profesor -->
+  <div id="modalNuevoProfesor" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.3); z-index:2000; align-items:center; justify-content:center;">
+    <div style="background:#fff; padding:2rem; border-radius:10px; min-width:320px; max-width:90vw; margin:auto;">
+      <h2>Nuevo Profesor</h2>
+      <form id="formNuevoProfesor">
+        <label>Nombre(s): <input type="text" id="nuevoNombre" required></label><br>
+        <label>Apellidos: <input type="text" id="nuevoApellidos" required></label><br>
+        <label>Correo: <input type="email" id="nuevoCorreo" required></label><br>
+        <label>Teléfono: <input type="text" id="nuevoTelefono" required></label><br>
+        <label>Matrícula: <input type="text" id="nuevoMatricula" required></label><br>
+        <label>Especialidad: <input type="text" id="nuevoEspecialidad" required></label><br>
+        <button type="submit">Guardar</button>
+        <button type="button" id="cerrarModalProfesor">Cancelar</button>
+      </form>
+    </div>
+  </div>
+  <script src="panelProfesor.js"></script>
+</body>
+</html>

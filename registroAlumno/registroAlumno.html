@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Estudiante | TecNM Campus Cancún</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="registroAlumno.css">
+</head>
+<body>
+    <div class="page-wrapper">
+        <nav class="top-nav">
+            <a href="../1.html" class="back-button">
+                <i class="fas fa-arrow-left"></i>
+                <span>Volver al Panel</span>
+            </a>
+            <img src="https://www.cancun.tecnm.mx/wp-content/themes/itcancun/img/Fotos-PDF-Doctorado/LOGO%20ITCANCUN%20MARCA%20REGISTRADA.png" alt="Logo TecNM" class="nav-logo">
+        </nav>
+
+        <main class="main-content">
+            <div class="form-container">
+                <header class="form-header">
+                    <h1>Registro de Estudiante</h1>
+                    <p>Ingresa los datos del nuevo estudiante para las actividades extraescolares</p>
+                </header>
+
+                <form id="registrationForm" class="registration-form">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="matricula">
+                                <i class="fas fa-id-card"></i>
+                                Matrícula
+                            </label>
+                            <input 
+                                type="text" 
+                                id="matricula" 
+                                name="matricula" 
+                                required
+                                placeholder="Ej: A12345"
+                                pattern="[A-Za-z0-9]+"
+                                maxlength="10"
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="nombres">
+                                <i class="fas fa-user"></i>
+                                Nombres
+                            </label>
+                            <input 
+                                type="text" 
+                                id="nombres" 
+                                name="nombres" 
+                                required
+                                placeholder="Ingresa los nombres"
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="apellidos">
+                                <i class="fas fa-user"></i>
+                                Apellidos
+                            </label>
+                            <input 
+                                type="text" 
+                                id="apellidos" 
+                                name="apellidos" 
+                                required
+                                placeholder="Ingresa los apellidos"
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="correo">
+                                <i class="fas fa-envelope"></i>
+                                Correo Electrónico
+                            </label>
+                            <input 
+                                type="email" 
+                                id="correo" 
+                                name="correo" 
+                                required
+                                placeholder="correo@ejemplo.com"
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="telefono">
+                                <i class="fas fa-phone"></i>
+                                Teléfono
+                            </label>
+                            <input 
+                                type="tel" 
+                                id="telefono" 
+                                name="telefono" 
+                                required
+                                placeholder="(999) 123-4567"
+                                pattern="[0-9()-\s]+"
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="semestre">
+                                <i class="fas fa-graduation-cap"></i>
+                                Semestre
+                            </label>
+                            <select id="semestre" name="semestre" required>
+                                <option value="">Selecciona el semestre</option>
+                                <option value="1">1er Semestre</option>
+                                <option value="2">2do Semestre</option>
+                                <option value="3">3er Semestre</option>
+                                <option value="4">4to Semestre</option>
+                                <option value="5">5to Semestre</option>
+                                <option value="6">6to Semestre</option>
+                                <option value="7">7mo Semestre</option>
+                                <option value="8">8vo Semestre</option>
+                                <option value="9">9no Semestre</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label for="carrera">
+                                <i class="fas fa-book"></i>
+                                Carrera
+                            </label>
+                            <div id="lista-carreras" class="carreras-grid"></div>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn-secondary" onclick="window.location.href='../1.html'">
+                            <i class="fas fa-times"></i>
+                            Cancelar
+                        </button>
+                        <button type="submit" class="btn-primary">
+                            <i class="fas fa-save"></i>
+                            Registrar Estudiante
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </main>
+
+        <div id="notification" class="notification" style="display: none;">
+            <div class="notification-content">
+                <i class="notification-icon"></i>
+                <span class="notification-message"></span>
+            </div>
+        </div>
+    </div>
+    <script src="registroAlumno.js"></script>
+</body>
+</html>
